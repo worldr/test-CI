@@ -1,0 +1,71 @@
+version: 2.1
+
+#   ______
+#__/ Jobs \_____________________________________________________________________
+jobs:
+
+  #   ____________
+  #__/ Job: build \_____________________________________________________________
+  build:
+    docker:
+      - image: ubuntu:bionic
+    steps:
+      - checkout
+      - run:
+          name: Building
+          command: echo "This is a build step."
+
+  #   ___________
+  #__/ Job: test \______________________________________________________________
+  test:
+    docker:
+      - image: ubuntu:bionic
+    steps:
+      - checkout
+      - run:
+          name: Testing
+          command: echo "This is a testing step."
+
+  #   ______________
+  #__/ Job: package \___________________________________________________________
+  packaging:
+    docker:
+      - image: ubuntu:bionic
+    steps:
+      - checkout
+      - run:
+          name: Packaging
+          command: echo "This is a packaging step."
+
+#   ____________
+#__/ Workflows  \_______________________________________________________________
+#
+# We should:
+#   + Never build the develop branch.
+#   + Never upload unstable packages releases unless on master.
+#   + Only build on PR -- this is controlled by CircleCI itself.
+#
+workflows:
+  version: 2
+  unstable:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - /^develop$/
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - /^develop$/
+                - /^circleci.*/
+      - packaging:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - /^main$/
