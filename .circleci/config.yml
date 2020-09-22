@@ -8,7 +8,7 @@ jobs:
   #__/ Job: build \_____________________________________________________________
   build:
     docker:
-      - image: ubuntu/20.04
+      - image: ubuntu:bionic
     steps:
       - checkout
       - run:
@@ -19,7 +19,7 @@ jobs:
   #__/ Job: test \______________________________________________________________
   test:
     docker:
-      - image: ubuntu/20.04
+      - image: ubuntu:bionic
     steps:
       - checkout
       - run:
@@ -30,7 +30,7 @@ jobs:
   #__/ Job: package \___________________________________________________________
   packaging:
     docker:
-      - image: ubuntu/20.04
+      - image: ubuntu:bionic
     steps:
       - checkout
       - run:
