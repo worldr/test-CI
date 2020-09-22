@@ -49,23 +49,14 @@ workflows:
   version: 2
   unstable:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - /^develop$/
+      - build
       - test:
           requires:
             - build
-          filters:
-            branches:
-              ignore:
-                - /^develop$/
-                - /^circleci.*/
       - packaging:
           requires:
             - test
           filters:
             branches:
               only:
-                - /^main$/
+                - /^master$/
