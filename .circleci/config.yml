@@ -49,14 +49,22 @@ workflows:
   version: 2
   unstable:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - /^(fix|bug|feature|design)/.*/
       - test:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - /^(fix|bug|feature|design)/.*/
       - packaging:
           requires:
             - test
           filters:
             branches:
               only:
-                - /^master$/
+                - master
