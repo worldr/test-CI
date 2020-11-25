@@ -6,4 +6,4 @@ Testing filters for CircleCI
 
 That is the unstable one.
 
-Sean's change from fix/test
+Sean's change from fix/test plus direct to master
