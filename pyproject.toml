@@ -1,0 +1,3 @@
+[tool.towncrier]
+directory = "changes"
+filename = "NEWS.rst"
