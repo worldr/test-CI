@@ -17,7 +17,6 @@ version_pattern = [
     "VERSION.txt:VERSION {version}",
 ]
 version_source = "tag"
-check_build_status = true
 branch = "main"
 changelog_file = "CHANGELOG.md"
-build_command = ""
+build_command = "make build"
