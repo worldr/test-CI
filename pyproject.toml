@@ -20,3 +20,4 @@ version_source = "tag"
 check_build_status = true
 branch = "main"
 changelog_file = "CHANGELOG.md"
+build_command = ""

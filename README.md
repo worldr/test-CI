@@ -44,10 +44,14 @@ pre-commit autoupdate  # Only if you want the latest versions!
 Then, every time you commit, the commit will be checked for all the things
 present in the `.pre-commit-config.yaml` configuration file.
 
-### gitlint
+## gitlint
 
 Please install [gitlint](https://github.com/jorisroovers/gitlint) as shown
 [here](https://jorisroovers.com/gitlint/#getting-started). The pre-commit hook
 should take care of it all but if you do not want to use that, please [follow
 those
 steps](https://jorisroovers.com/gitlint/#using-gitlint-as-a-commit-msg-hook).
+
+## Do release
+
+semantic-release -v DEBUG changelog --unreleased
