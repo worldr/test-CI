@@ -1,12 +1,14 @@
 # test-CI
 
-Testing filters for CircleCI
+Testing filters for CircleCI and releases procedures…
+
+VERSION 0.0.0
 
 ## Develop branch
 
 That is the unstable one.
 
-Sean's change from fix/test plus direct to master
+Sean's change from fix/test plus direct to main.
 
 ## Main branch is now "main", not master
 
