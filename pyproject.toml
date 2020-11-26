@@ -1,3 +1,22 @@
+# -*- coding: utf-8 -*-
+
+#   ____________
+#__/ Town crier \_______________________________________________________________
+#
 [tool.towncrier]
 directory = "changes"
 filename = "NEWS.rst"
+
+#   __________________
+#__/ Semantic release \_________________________________________________________
+#
+# https://python-semantic-release.readthedocs.io/en/latest/
+[tool.semantic_release]
+version_pattern = [
+    "README.md:VERSION {version}",
+    "VERSION.txt:VERSION {version}",
+]
+version_source = "tag"
+check_build_status = true
+branch = "main"
+changelog_file = "CHANGELOG.md"
