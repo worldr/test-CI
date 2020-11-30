@@ -54,4 +54,68 @@ steps](https://jorisroovers.com/gitlint/#using-gitlint-as-a-commit-msg-hook).
 
 ## Do release
 
-semantic-release -v DEBUG changelog --unreleased
+### Town crier: Hear ye! Head ye!
+
+The main [towncrier](https://github.com/twisted/towncrier) page.
+
+To create a new entry, use this:
+
+```bash
+towncrier create slug.type
+git add changes/slug.type
+```
+where
+
++ `slug` is an arbitrary slug referring to a YT issue, epic, or whatever internal
+  specific information we want.
++ `type` is one of "feature", "bugfix", "doc", "removal", or "misc".
+
+This creates an
+[rst](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
+formatted file (but without the suffix) which will be added to the `NEWS.rst`
+file.
+
+This file need to be added to git.
+
+To see what the new release will look like:
+
+```bash
+towncrier build --draft --name release-name --version release-sem-ver
+```
+
+Where  `release-name` is a name for the release and `release-sem-ver` is the
+release version. This will print to `stdout` a rst formatted fragment which
+gets added to `NEWS.rst` on release.
+
+To do a release:
+```bash
+towncrier build --name release-name --version release-sem-ver
+```
+
+Note that this *will remove all the files under `./changes`*. You have been
+warned!
+
+## NPM
+
+### Install npm packages globally without sudo on macOS and Linux
+
+Run:
+
+```bash
+mkdir "${HOME}/.npm-packages"
+npm config set prefix "${HOME}/.npm-packages"
+```
+
+Then update `~/.bashrc` or `.zshrc` with:
+
+```
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+```
+
+More details on the [Install npm packages globally without sudo on macOS and
+Linux](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
+page.
