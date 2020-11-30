@@ -120,6 +120,17 @@ More details on the [Install npm packages globally without sudo on macOS and
 Linux](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 page.
 
+### conventional-changelog-cli
+
+From the
+[GitHun page](
+https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli):
+
+```bash
+npm install -g conventional-changelog-cli
+conventional-changelog -p angular -i CHANGELOG.md -s
+```
+
 ## Push requests
 
 ### PR merge
