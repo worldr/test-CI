@@ -119,3 +119,9 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 More details on the [Install npm packages globally without sudo on macOS and
 Linux](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 page.
+
+## Push requests
+
+### PR merge
+
+This is a basic merge…
