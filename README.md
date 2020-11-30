@@ -144,3 +144,6 @@ This is a basic squash then merge…
 ### PR rebase
 
 This is a basic rebase then merge…
+
+This looks like it is going to be needed if we wanted to use the
+conventional changelog methodoloy.
