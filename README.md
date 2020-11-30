@@ -125,3 +125,7 @@ page.
 ### PR merge
 
 This is a basic merge…
+
+### PR squash
+
+This is a basic squash then merge…
