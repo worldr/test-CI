@@ -137,13 +137,44 @@ conventional-changelog -p angular -i CHANGELOG.md -s
 
 This is a basic merge…
 
+*conventional-changelog-cli seems to ignore this type of PR.*
+
 ### PR squash
 
 This is a basic squash then merge…
+
+*conventional-changelog-cli seems to ignore this type of PR.*
 
 ### PR rebase
 
 This is a basic rebase then merge…
 
 This looks like it is going to be needed if we wanted to use the
-conventional changelog methodology.
+conventional changelog methodology. All the commits are rebased thus an
+additional step of cleaning up the local branch before a merge needs to
+happen. For example, `wip: blah blah…` messages need to be squashed into one
+commit -- the final one. It might be possible to excludes certain prefixes,
+although I am not sure how.
+
+The rule is: *The angular commit schema is best for perfect commits.*
+
+[standard-version](https://github.com/conventional-changelog/standard-version)
+might be a better tool for ignoring specific commits.
+
+### Alternative
+
+There is
+[github-changelog-generator](https://github.com/github-changelog-generator/github-changelog-generator)
+which works specifically for GitHub PRs and can be called from docker like so:
+
+```bash
+docker run -it --rm -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u worldr -p test-CI -t $CHANGELOG_GITHUB_TOKEN
+```
+
+[This is the changelog it generated](CHANGELOG_GITHUB_GENERATOR.md).
+
+## Release
+
+### [Standard version](https://github.com/conventional-changelog/standard-version)
+
+### [Semantic release](https://github.com/semantic-release/semantic-release)
