@@ -94,3 +94,28 @@ towncrier build --name release-name --version release-sem-ver
 
 Note that this *will remove all the files under `./changes`*. You have been
 warned!
+
+## NPM
+
+### Install npm packages globally without sudo on macOS and Linux
+
+Run:
+
+```bash
+mkdir "${HOME}/.npm-packages"
+npm config set prefix "${HOME}/.npm-packages"
+```
+
+Then update `~/.bashrc` or `.zshrc` with:
+
+```
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+```
+
+More details on the [Install npm packages globally without sudo on macOS and
+Linux](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
+page.
