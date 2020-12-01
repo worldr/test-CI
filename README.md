@@ -52,6 +52,9 @@ should take care of it all but if you do not want to use that, please [follow
 those
 steps](https://jorisroovers.com/gitlint/#using-gitlint-as-a-commit-msg-hook).
 
+We can add new prefixes such as `wip: […]` and have standard-version ignore
+those when making the changelog. Any such list needs to be compiled first…
+
 ## Do release
 
 ### Town crier: Hear ye! Head ye!
@@ -139,6 +142,8 @@ This is a basic merge…
 
 *conventional-changelog-cli seems to ignore this type of PR.*
 
+*standard-version*
+
 ### PR squash
 
 This is a basic squash then merge…
@@ -177,4 +182,51 @@ docker run -it --rm -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-chan
 
 ### [Standard version](https://github.com/conventional-changelog/standard-version)
 
+This does:
+
+1. Retrieve the current version of your repository by looking at
+   packageFiles, falling back to the last git tag.
+1. bump the version in bumpFiles based on your commits.
+1. Generates a changelog based on your commits (uses conventional-changelog
+   under the hood).
+1. Creates a new commit including your bumpFiles and updated CHANGELOG.
+1. Creates a new tag with the new version number.
+
+Commands:
+
+```bash
+npx standard-version --dry-run --prerelease RC --no-verify # Create a RC release.
+npx standard-version --dry-run --no-verify # Create a normal release.
+npx standard-version --help # Err, help?
+```
+
+`--no-verify` stops the pre-commit hook from running.
+
+[How is standard-version different from
+semantic-release?](https://github.com/conventional-changelog/standard-version#how-is-standard-version-different-from-semantic-release)
+is  good read.
+
 ### [Semantic release](https://github.com/semantic-release/semantic-release)
+
+This does:
+
+1. **Verify Conditions**	Verify all the conditions to proceed with the
+   release.
+1. **Get last release**	Obtain the commit corresponding to the last release by
+   analyzing Git tags.
+1. **Analyze commits**	Determine the type of release based on the commits
+   added since the last release.
+1. **Verify release**	Verify the release conformity.
+1. **Generate notes**	Generate release notes for the commits added since the
+   last release.
+1. **Create Git tag**	Create a Git tag corresponding to the new release
+   version.
+1. **Prepare**	Prepare the release.
+1. **Publish**	Publish the release.
+1. **Notify**	Notify of new releases or errors.
+
+[Full documentation is
+here](https://semantic-release.gitbook.io/semantic-release/) and it is good™.
+
+However, this is a beast and very much linked to NodeJS and automate the whole
+process. This is a good thing™ but does not fit our needs just yet…
