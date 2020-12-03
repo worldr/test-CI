@@ -55,6 +55,21 @@ steps](https://jorisroovers.com/gitlint/#using-gitlint-as-a-commit-msg-hook).
 We can add new prefixes such as `wip: […]` and have standard-version ignore
 those when making the changelog. Any such list needs to be compiled first…
 
+## Commit messages format
+
+[Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) is the
+main source of information, but as an aid mémoire:
+
++ **feat**: a new feature
++ **fix**: a bug fix
++ **docs**: documentation only change
++ **style**: changes that do not affect the meaning of the code -- formatting
++ **refactor**: a code change that neither fixes a bug nor adds a feature
++ **perf**: A code change that improves performance
++ **test**: Adding a missing test
++ **chore**: Changes to the build process or auxiliary tools and libraries such as
+  documentation generation
+
 ## Do release
 
 ### Town crier: Hear ye! Head ye!
